@@ -79,8 +79,8 @@
       <file leaf-file-name="Juego.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Conecta4/Juego.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="285" column="0" lean-forward="true" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
+            <state relative-caret-position="351">
+              <caret line="304" column="16" lean-forward="false" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="16" />
               <folding>
                 <element signature="e#463#464#0" expanded="true" />
                 <element signature="e#507#508#0" expanded="true" />
@@ -353,12 +353,12 @@
       <workItem from="1518760725955" duration="147000" />
       <workItem from="1518793711108" duration="237000" />
       <workItem from="1518794121324" duration="481000" />
-      <workItem from="1518855884785" duration="6971000" />
+      <workItem from="1518855884785" duration="7322000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37628000" />
+    <option name="totallyTimeSpent" value="37979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1369,8 +1369,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Conecta4/Juego.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="285" column="0" lean-forward="true" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
+        <state relative-caret-position="351">
+          <caret line="304" column="16" lean-forward="false" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="16" />
           <folding>
             <element signature="e#463#464#0" expanded="true" />
             <element signature="e#507#508#0" expanded="true" />

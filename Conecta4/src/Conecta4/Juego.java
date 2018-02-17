@@ -299,6 +299,10 @@ public class Juego {
             int contComp = 0;
             for (int j = 0; j < 2; j++) {
 
+                if (comp == array[array.length - 1] && j == 1){
+                    break;
+                }
+                
                 for (int i = 1; i < 4; i++) {
                     int filComp = comp[0] * i;
                     int colComp = comp[1] * i;
