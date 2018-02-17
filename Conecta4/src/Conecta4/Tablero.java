@@ -84,11 +84,7 @@ public class Tablero {
     public static void showTablero() {
         for (char[] aTablero : tablero) {
             for (int j = 0; j < tablero[0].length; j++) {
-                if (aTablero[j] == getFichaBasica()) {
-                    System.out.print("\t" + getFichaBasica());
-                } else {
                     System.out.print("\t" + aTablero[j]);
-                }
             }
             System.out.println("");
         }

@@ -78,7 +78,6 @@ public class Juego {
     private static void usarFicha(int columna) {
         if (Tablero.getTablero()[0][columna] == Tablero.getFichaBasica()) {
             Tablero.colocarFicha(jugador(), columna);
-            cambiarTurno();
         } else {
             System.out.println("----");
             System.out.println("Esa columna ya esta llena!");
@@ -178,26 +177,28 @@ public class Juego {
             System.out.println("Le toca a " + (jugador().getName()));
             System.out.print("Elige una columna: ");
             int columnaElegida = comprovarEntrada(scan.next());
+
             if (columnaElegida == -1) {
                 System.out.println("No es una columna valida");
                 System.out.println("----");
             } else {
                 usarFicha(columnaElegida - 1);
-            }
-            if (comprovacionMejorada()) {
+
+                if (comprovacionMejorada()) {
+
+                    Tablero.showTablero();
+                    System.out.println();
+
+                    jugador().partidaGanada();
+                    System.out.println(jugador().getName() + " a ganado la partida en el ultimo movimiento!");
+                    System.out.println("----");
+
+                    cambiarTurno();
+                    jugador().partidaPerdida();
+                    showEstaditicas();
+                    break;
+                }
                 cambiarTurno();
-
-                Tablero.showTablero();
-                System.out.println();
-
-                jugador().partidaGanada();
-                System.out.println(jugador().getName() + " a ganado la partida en el ultimo movimiento!");
-                System.out.println("----");
-
-                cambiarTurno();
-                jugador().partidaPerdida();
-                showEstaditicas();
-                break;
             }
         }
 
@@ -284,20 +285,25 @@ public class Juego {
 
 
     private static boolean comprovacionMejorada() {
+
+        if (jugador().getFichas() > Tablero.getFilas() * Tablero.getColumnas() / 2 - 4) {
+            return false;
+        }
+
         char[][] tableroComp = Tablero.getTablero();
         int fil = tableroComp.length;
         int col = tableroComp[0].length;
         int filCompUF, colCompUC;
 
         int[][] array = {{-1, -1},
-                {0, -1},
-                {1, -1}, {-1, 0}};
+                         { 0, -1},
+                         { 1, -1}, {1, 0}};
 
         for (int[] comp : array) {
             int contComp = 0;
             for (int j = 0; j < 2; j++) {
 
-                if (comp == array[array.length - 1] && j == 1){
+                if (comp == array[array.length - 1] && j == 1) {
                     break;
                 }
 
@@ -326,7 +332,9 @@ public class Juego {
                         if (contComp == 3) {
                             return true;
                         }
+                        continue;
                     }
+                    break;
 
                 }
             }
