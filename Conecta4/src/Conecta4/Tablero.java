@@ -6,11 +6,6 @@ public class Tablero {
     private static int columnas;
     private static char[][] tablero;
 
-     Tablero(int filas, int columnas) {
-        Tablero.filas = filas;
-        Tablero.columnas = columnas;
-    }
-
     public static void cambiarDimensiones(int filas, int columnas) throws IllegalArgumentException{
         setFilas(filas);
         setColumnas(columnas);

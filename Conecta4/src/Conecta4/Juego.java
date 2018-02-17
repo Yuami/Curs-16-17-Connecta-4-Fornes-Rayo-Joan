@@ -324,25 +324,25 @@ public class Juego {
     private static void showEstaditicas() {
         int partidasTotales = jugadores[0].getPartidasGanadas() + jugadores[0].getPartidasEmpatadas() + jugadores[0].getPartidasPerdidas();
 
-        System.out.println("----");
-
         if (partidasTotales > 0) {
             System.out.println("Estadisticas Generales");
             System.out.println("Partidas totales: " + partidasTotales);
-            for (Jugador jugador : jugadores)
-                System.out.println(jugador.getName() + " tiene un porcentaje de victoria del " + jugador.getPartidasGanadas() / partidasTotales * 100 + "%");
-            System.out.println();
+            for (Jugador jugador : jugadores) {
+                double porcentajeVictoria = jugador.getPartidasGanadas() / ( (double) partidasTotales ) * 100;
+                System.out.println(jugador.getName() + " tiene un porcentaje de victoria del " + porcentajeVictoria + "%");
+                System.out.println();
+            }
+
+            System.out.println("Estadisticas Actuales");
+            System.out.println("----");
+
+            for (Jugador jugador : jugadores) {
+                System.out.println(jugador);
+                System.out.println();
+            }
+
+            System.out.println("----");
         }
-
-        System.out.println("Estadisticas Actuales");
-        System.out.println("----");
-
-        for (Jugador jugador : jugadores) {
-            System.out.println(jugador);
-            System.out.println();
-        }
-
-        System.out.println("----");
     }
 
 }
