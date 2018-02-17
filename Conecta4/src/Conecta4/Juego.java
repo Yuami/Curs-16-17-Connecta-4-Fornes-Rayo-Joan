@@ -31,8 +31,7 @@ public class Juego {
 
     public static void startJuego() {
 
-        char[][] tablero = new char[6][7];
-        Tablero.setTablero(tablero);
+        Tablero.cambiarDimensiones(6,7);
 
         jugadores = new Jugador[2];
         jugadores[0] = new Jugador("1", '◉');
@@ -222,7 +221,7 @@ public class Juego {
                     jugador.resetEmpatadas();
                     jugador.resetPerdidas();
                 }
-                
+
                 System.out.println("Estadisticas reseteadas correctamente");
                 System.out.println("----");
                 showEstaditicas();
@@ -238,7 +237,9 @@ public class Juego {
 
     private static void showEstaditicas() {
         int partidasTotales = jugadores[0].getPartidasGanadas() + jugadores[0].getPartidasEmpatadas() + jugadores[0].getPartidasPerdidas();
+
         System.out.println("----");
+
         if (partidasTotales > 0) {
             System.out.println("Estadisticas Generales");
             System.out.println("Partidas totales: " + partidasTotales);
@@ -246,12 +247,15 @@ public class Juego {
                 System.out.println(jugador.getName() + " tiene un porcentaje de victoria del " + jugador.getPartidasGanadas() / partidasTotales * 100 + "%");
             System.out.println();
         }
+
         System.out.println("Estadisticas Actuales");
         System.out.println("----");
 
-        System.out.println(jugadores[0]);
-        System.out.println();
-        System.out.println(jugadores[1]);
+        for (Jugador jugador : jugadores)
+        {
+            System.out.println(jugador);
+            System.out.println();
+        }
 
         System.out.println("----");
     }
@@ -267,7 +271,6 @@ public class Juego {
     }
 
     private static void inicializar() {
-        Tablero.setTablero(new char[Tablero.getFilas()][Tablero.getColumnas()]);
 
         int filas = Tablero.getTablero().length;
         int columnas = Tablero.getTablero()[0].length;

@@ -14,9 +14,11 @@ public class Tablero {
     public static void cambiarDimensiones(int filas, int columnas) throws IllegalArgumentException{
         setFilas(filas);
         setColumnas(columnas);
+        char[][] tablero = new char[filas][columnas];
+        setTablero(tablero);
     }
 
-    private static void setColumnas(int columnas) throws IllegalArgumentException {
+    public static void setColumnas(int columnas) throws IllegalArgumentException {
         if (columnas < 5) {
             throw new IllegalArgumentException("El numero de columnas es demasiado pequeño! (Minimo 5 columnas)");
         }
@@ -29,7 +31,7 @@ public class Tablero {
         Tablero.columnas = columnas;
     }
 
-    private static void setFilas(int filas) throws IllegalArgumentException {
+    public static void setFilas(int filas) throws IllegalArgumentException {
         if (filas < 4) {
             throw new IllegalArgumentException("El numero de filas es demasiado pequeño! (Minimo 4 filas)");
         }
@@ -66,7 +68,7 @@ public class Tablero {
         System.out.println("Dimensiones: " + filas + "x" + columnas);
     }
 
-    public static int colocarFicha( Jugador jugador, int columna) {
+    public static void colocarFicha( Jugador jugador, int columna) {
 
         for (int i = 0; i < tablero[0].length; i++) {
             if (tablero[filas - 1 - i][columna] == getFichaBasica()) {
@@ -74,10 +76,9 @@ public class Tablero {
                 jugador.usarFicha();
                 Juego.setUltimaColumna(columna);
                 Juego.setUltimaFila(filas - 1 -i);
-                return filas - 1 - i;
+                break;
             }
         }
-        return -1;
     }
 
     public static void showTablero() {
