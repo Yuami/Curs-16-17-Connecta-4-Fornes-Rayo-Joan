@@ -31,7 +31,7 @@ public class Juego {
 
     public static void startJuego() {
 
-        Tablero.cambiarDimensiones(6,7);
+        Tablero.cambiarDimensiones(6, 7);
 
         jugadores = new Jugador[2];
         jugadores[0] = new Jugador("1", '◉');
@@ -186,7 +186,7 @@ public class Juego {
             } else {
                 usarFicha(columnaElegida - 1);
             }
-            if (comprovacionPartidaGanada()) {
+            if (comprovacionMejorada()) {
                 cambiarTurno();
 
                 Tablero.showTablero();
@@ -251,8 +251,7 @@ public class Juego {
         System.out.println("Estadisticas Actuales");
         System.out.println("----");
 
-        for (Jugador jugador : jugadores)
-        {
+        for (Jugador jugador : jugadores) {
             System.out.println(jugador);
             System.out.println();
         }
@@ -285,70 +284,50 @@ public class Juego {
         }
     }
 
-    private static boolean comprovacionPartidaGanada() {
+
+    private static boolean comprovacionMejorada() {
         char[][] tableroComp = Tablero.getTablero();
+        int fil = tableroComp.length;
+        int col = tableroComp[0].length;
+        int filCompUF, colCompUC;
 
-        int filas = tableroComp.length;
-        int columnas = tableroComp[0].length;
+        int[][] array = {{-1, -1},
+                {0, -1},
+                {1, -1}, {-1, 0}};
 
-        int contFilas, contColumnas, contDiagonalIzq, contDiagonalDer;
-        contFilas = contColumnas = contDiagonalIzq = contDiagonalDer = 0;
+        for (int[] comp : array) {
+            int contComp = 0;
+            for (int j = 0; j < 2; j++) {
 
-        for (int i = 1; i < 4; i++) {
-            //Comprova Fila
-            if ((ultimaColumna - i >= 0) &&
-                    (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila][ultimaColumna - i])
-                    ) {
-                contFilas++;
-                if (contFilas == 3)
-                    return true;
-            }
-            if ((ultimaColumna + i < columnas) &&
-                    (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila][ultimaColumna + i])
-                    ) {
-                contFilas++;
-                if (contFilas == 3)
-                    return true;
-            }
-            //Comprova Columna
-            if ((ultimaFila + i < filas) &&
-                    (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila + i][ultimaColumna])
-                    ) {
-                contColumnas++;
-                if (contColumnas == 3)
-                    return true;
-            }
-            //Comprova Diagonal 1
-            if ((ultimaFila - i >= 0) && (ultimaColumna - i >= 0) &&
-                    (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila - i][ultimaColumna - i])
-                    ) {
-                contDiagonalIzq++;
-                if (contDiagonalIzq == 3)
-                    return true;
-            }
-            if ((ultimaFila + i < filas) && (ultimaColumna + i < columnas) &&
-                    (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila + i][ultimaColumna + i])
-                    ) {
-                contDiagonalIzq++;
-                if (contDiagonalIzq == 3)
-                    return true;
-            }
-            //Comrpova Diagonal 2
-            if ((ultimaFila + i < filas) && (ultimaColumna - i >= 0) &&
-                    (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila + i][ultimaColumna - i])
-                    ) {
-                contDiagonalDer++;
-                if (contDiagonalDer == 3)
-                    return true;
-            }
-            if ((ultimaFila - i >= 0) && (ultimaColumna + i < columnas) &&
-                    (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila - i][ultimaColumna + i])
-                    ) {
-                contDiagonalDer++;
-                if (contDiagonalDer == 3)
-                    return true;
-            }
+                for (int i = 1; i < 4; i++) {
+                    int filComp = comp[0] * i;
+                    int colComp = comp[1] * i;
 
+                    if (j == 0) {
+                        filCompUF = filComp + ultimaFila;
+                        colCompUC = colComp + ultimaColumna;
+                    } else {
+                        filCompUF = -filComp + ultimaFila;
+                        colCompUC = -colComp + ultimaColumna;
+                    }
+
+                    if (filCompUF < 0 || filCompUF >= fil ||
+                            colCompUC < 0 || colCompUC >= col) {
+                        break;
+                    }
+
+                    char comprovando = tableroComp[ultimaFila][ultimaColumna];
+
+
+                    if (comprovando == tableroComp[filCompUF][colCompUC]) {
+                        contComp++;
+                        if (contComp == 3) {
+                            return true;
+                        }
+                    }
+
+                }
+            }
         }
 
         return false;
