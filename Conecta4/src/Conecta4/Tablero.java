@@ -68,19 +68,6 @@ public class Tablero {
         System.out.println("Dimensiones: " + filas + "x" + columnas);
     }
 
-    public static void colocarFicha( Jugador jugador, int columna) {
-
-        for (int i = 0; i < tablero[0].length; i++) {
-            if (tablero[filas - 1 - i][columna] == getFichaBasica()) {
-                tablero[filas - 1 - i][columna] = jugador.getFicha();
-                jugador.usarFicha();
-                Juego.setUltimaColumna(columna);
-                Juego.setUltimaFila(filas - 1 -i);
-                break;
-            }
-        }
-    }
-
     public static void showTablero() {
         for (char[] aTablero : tablero) {
             for (int j = 0; j < tablero[0].length; j++) {
@@ -95,4 +82,16 @@ public class Tablero {
         System.out.println("");
     }
 
+    public static void colocarFicha( Jugador jugador, int columna) {
+
+        for (int i = 0; i < tablero[0].length; i++) {
+            if (tablero[filas - 1 - i][columna] == getFichaBasica()) {
+                tablero[filas - 1 - i][columna] = jugador.getFicha();
+                jugador.usarFicha();
+                Juego.setUltimaColumna(columna);
+                Juego.setUltimaFila(filas - 1 -i);
+                break;
+            }
+        }
+    }
 }
