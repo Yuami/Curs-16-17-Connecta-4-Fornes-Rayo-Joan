@@ -2,21 +2,21 @@ package Conecta4;
 
 public class Tablero {
 
-    private int filas;
-    private int columnas;
-    private char[][] tablero;
+    private static int filas;
+    private static int columnas;
+    private static char[][] tablero;
 
-    public Tablero(int filas, int columnas) {
-        this.filas = filas;
-        this.columnas = columnas;
+     Tablero(int filas, int columnas) {
+        Tablero.filas = filas;
+        Tablero.columnas = columnas;
     }
 
-    public void cambiarDimensiones(int filas, int columnas) throws IllegalArgumentException{
+    public static void cambiarDimensiones(int filas, int columnas) throws IllegalArgumentException{
         setFilas(filas);
         setColumnas(columnas);
     }
 
-    public void setColumnas(int columnas) throws IllegalArgumentException {
+    private static void setColumnas(int columnas) throws IllegalArgumentException {
         if (columnas < 5) {
             throw new IllegalArgumentException("El numero de columnas es demasiado pequeño! (Minimo 5 columnas)");
         }
@@ -26,10 +26,10 @@ public class Tablero {
         if (columnas % 2 == 0) {
             throw new IllegalArgumentException("El numero de columnas no puede ser par!");
         }
-        this.columnas = columnas;
+        Tablero.columnas = columnas;
     }
 
-    public void setFilas(int filas) throws IllegalArgumentException {
+    private static void setFilas(int filas) throws IllegalArgumentException {
         if (filas < 4) {
             throw new IllegalArgumentException("El numero de filas es demasiado pequeño! (Minimo 4 filas)");
         }
@@ -39,34 +39,34 @@ public class Tablero {
         if (filas % 2 == 1) {
             throw new IllegalArgumentException("El numero de filas no puede ser impar!");
         }
-        this.filas = filas;
+        Tablero.filas = filas;
     }
 
-    public void setTablero(char[][] tablero) {
-        this.tablero = tablero;
+    public static void setTablero(char[][] tablero) {
+        Tablero.tablero = tablero;
     }
 
-    public char getFichaBasica() {
+    public static char getFichaBasica() {
         return (char) 1;
     }
 
-    public int getColumnas() {
+    public static int getColumnas() {
         return columnas;
     }
 
-    public int getFilas() {
+    public static int getFilas() {
         return filas;
     }
 
-    public char[][] getTablero() {
+    public static char[][] getTablero() {
         return tablero;
     }
 
-    public void showDimensiones() {
+    public static void showDimensiones() {
         System.out.println("Dimensiones: " + filas + "x" + columnas);
     }
 
-    public int colocarFicha( Jugador jugador, int columna) {
+    public static int colocarFicha( Jugador jugador, int columna) {
 
         for (int i = 0; i < tablero[0].length; i++) {
             if (tablero[filas - 1 - i][columna] == getFichaBasica()) {
@@ -80,13 +80,13 @@ public class Tablero {
         return -1;
     }
 
-    public void showTablero() {
-        for (int i = 0; i < tablero.length; i++) {
+    public static void showTablero() {
+        for (char[] aTablero : tablero) {
             for (int j = 0; j < tablero[0].length; j++) {
-                if (tablero[i][j] == getFichaBasica()) {
+                if (aTablero[j] == getFichaBasica()) {
                     System.out.print("\t" + getFichaBasica());
                 } else {
-                    System.out.print("\t" + tablero[i][j]);
+                    System.out.print("\t" + aTablero[j]);
                 }
             }
             System.out.println("");

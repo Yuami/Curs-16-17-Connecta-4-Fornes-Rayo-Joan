@@ -15,7 +15,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Conecta4/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="85">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="e#83#84#0" expanded="true" />
@@ -41,9 +41,16 @@
       <file leaf-file-name="Juego.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Conecta4/Juego.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="319" column="33" lean-forward="false" selection-start-line="319" selection-start-column="33" selection-end-line="319" selection-end-column="33" />
-              <folding />
+            <state relative-caret-position="517">
+              <caret line="224" column="16" lean-forward="false" selection-start-line="224" selection-start-column="16" selection-end-line="224" selection-end-column="16" />
+              <folding>
+                <element signature="e#463#464#0" expanded="true" />
+                <element signature="e#507#508#0" expanded="true" />
+                <element signature="e#544#545#0" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
+                <element signature="e#614#615#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,15 +58,11 @@
       <file leaf-file-name="Tablero.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Conecta4/Tablero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="1003">
+              <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
               <folding>
-                <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-                <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-                <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-                <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-                <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-                <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+                <element signature="e#1574#1575#0" expanded="true" />
+                <element signature="e#1615#1616#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,6 +77,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Jugador</find>
+      <find>jugadores[get</find>
+    </findStrings>
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
@@ -85,8 +94,8 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Jugador.java" />
         <option value="$PROJECT_DIR$/src/Conecta4/Main.java" />
-        <option value="$PROJECT_DIR$/src/Conecta4/Tablero.java" />
         <option value="$PROJECT_DIR$/src/Conecta4/Jugador.java" />
+        <option value="$PROJECT_DIR$/src/Conecta4/Tablero.java" />
         <option value="$PROJECT_DIR$/src/Conecta4/Juego.java" />
       </list>
     </option>
@@ -97,7 +106,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-103" />
     <option name="y" value="-13" />
     <option name="width" value="1936" />
@@ -118,7 +127,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -142,8 +152,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,14 +305,15 @@
       <workItem from="1518760725955" duration="147000" />
       <workItem from="1518793711108" duration="237000" />
       <workItem from="1518794121324" duration="481000" />
+      <workItem from="1518855884785" duration="1527000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30657000" />
+    <option name="totallyTimeSpent" value="32184000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -343,7 +353,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="21" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -354,6 +364,54 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Conecta4/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#83#84#0" expanded="true" />
+            <element signature="e#117#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conecta4/Jugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="method#Jugador#0;class#Jugador#0" expanded="false" />
+            <element signature="method#toString#0;class#Jugador#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conecta4/Tablero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding>
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conecta4/Juego.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5185">
+          <caret line="319" column="33" lean-forward="false" selection-start-line="319" selection-start-column="33" selection-end-line="319" selection-end-column="33" />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Conecta4/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -380,7 +438,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4777">
           <caret line="295" column="37" lean-forward="false" selection-start-line="295" selection-start-column="37" selection-end-line="295" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -389,12 +454,8 @@
         <state relative-caret-position="527">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -426,12 +487,8 @@
         <state relative-caret-position="527">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -440,7 +497,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4777">
           <caret line="295" column="37" lean-forward="false" selection-start-line="295" selection-start-column="37" selection-end-line="295" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -471,12 +535,8 @@
         <state relative-caret-position="527">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -485,7 +545,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4777">
           <caret line="295" column="37" lean-forward="true" selection-start-line="295" selection-start-column="37" selection-end-line="295" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -516,12 +583,8 @@
         <state relative-caret-position="527">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -530,7 +593,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4777">
           <caret line="295" column="37" lean-forward="false" selection-start-line="295" selection-start-column="37" selection-end-line="295" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -561,12 +631,8 @@
         <state relative-caret-position="527">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -575,7 +641,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4777">
           <caret line="295" column="37" lean-forward="true" selection-start-line="295" selection-start-column="37" selection-end-line="295" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -594,7 +667,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -603,12 +683,8 @@
         <state relative-caret-position="527">
           <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -650,7 +726,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2040">
           <caret line="130" column="19" lean-forward="false" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -659,12 +742,8 @@
         <state relative-caret-position="476">
           <caret line="38" column="109" lean-forward="false" selection-start-line="38" selection-start-column="109" selection-end-line="38" selection-end-column="109" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -696,12 +775,8 @@
         <state relative-caret-position="357">
           <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -710,7 +785,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-          <folding />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -718,21 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
           <caret line="80" column="25" lean-forward="true" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Conecta4/Tablero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-          <folding>
-            <element signature="method#Tablero#0;class#Tablero#0" expanded="false" />
-            <element signature="method#cambiarDimensiones#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setColumnas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#setFilas#0;class#Tablero#0" expanded="false" />
-            <element signature="method#colocarFicha#0;class#Tablero#0" expanded="false" />
-            <element signature="method#showTablero#0;class#Tablero#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -749,7 +816,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Conecta4/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="85">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#83#84#0" expanded="true" />
@@ -758,11 +825,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conecta4/Tablero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="84" column="57" lean-forward="true" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
+          <folding>
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Conecta4/Juego.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="319" column="33" lean-forward="false" selection-start-line="319" selection-start-column="33" selection-end-line="319" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="517">
+          <caret line="224" column="16" lean-forward="false" selection-start-line="224" selection-start-column="16" selection-end-line="224" selection-end-column="16" />
+          <folding>
+            <element signature="e#463#464#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

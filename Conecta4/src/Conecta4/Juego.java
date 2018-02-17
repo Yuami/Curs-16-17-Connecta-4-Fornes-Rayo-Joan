@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Juego {
 
     private static Jugador[] jugadores;
-    private static Tablero tablero;
     private static int turno;
     private static int ultimaFila;
     private static int ultimaColumna;
@@ -18,31 +17,24 @@ public class Juego {
         Juego.ultimaColumna = ultimaColumna;
     }
 
-    public static Jugador jugador() {
+    private static Jugador jugador() {
         return jugadores[getTurno()];
     }
 
-    public static int getTurno() {
+    private static int getTurno() {
         return turno;
     }
 
-    public static Jugador[] getJugadores() {
-        return jugadores;
-    }
-
-    public static Tablero getTablero() {
-        return tablero;
-    }
-
-    public static void cambiarTurno() {
+    private static void cambiarTurno() {
         turno = (++turno) % 2;
     }
 
     public static void startJuego() {
-        jugadores = new Jugador[2];
-        tablero = new Tablero(6, 7);
-        turno = 0;
 
+        char[][] tablero = new char[6][7];
+        Tablero.setTablero(tablero);
+
+        jugadores = new Jugador[2];
         jugadores[0] = new Jugador("1", '◉');
         jugadores[1] = new Jugador("2", '▽');
 
@@ -51,10 +43,10 @@ public class Juego {
         boolean volver = true;
 
         while (volver) {
-            tablero.showDimensiones();
+            Tablero.showDimensiones();
             System.out.println("Jugadores");
-            for (int i = 0; i < jugadores.length; i++) {
-                System.out.println(jugadores[i].getName());
+            for (Jugador jugador : jugadores) {
+                System.out.println(jugador.getName());
             }
             System.out.println("----");
 
@@ -86,9 +78,9 @@ public class Juego {
         System.out.println("Gracias por jugar!");
     }
 
-    public static void usarFicha(int columna) {
-        if (tablero.getTablero()[0][columna] == tablero.getFichaBasica()) {
-            tablero.colocarFicha(jugador(), columna);
+    private static void usarFicha(int columna) {
+        if (Tablero.getTablero()[0][columna] == Tablero.getFichaBasica()) {
+            Tablero.colocarFicha(jugador(), columna);
             cambiarTurno();
         } else {
             System.out.println("----");
@@ -116,7 +108,7 @@ public class Juego {
             System.out.print("Escribe el numero de columnas que quieres: ");
             int col = scan.nextInt();
 
-            tablero.cambiarDimensiones(fil, col);
+            Tablero.cambiarDimensiones(fil, col);
 
         } catch (IllegalArgumentException iae) {
             System.out.println(iae.getMessage());
@@ -138,35 +130,37 @@ public class Juego {
         System.out.print("> ");
         String nombre = scan.next();
 
-        if (nombre.equals("1")) {
-            n = 0;
-        } else if (nombre.equals("2")) {
-            n = 1;
-        } else if (nombre.equals("3")) {
-            System.out.println("Volviendo al menu principal");
-            System.out.println("----");
-            return;
-        } else {
-            System.out.println("----");
-            System.out.println("El numero introducido no corresponde a ningun jugador!");
-            System.out.println("----");
-            return;
+        switch (nombre) {
+            case "1":
+                n = 0;
+                break;
+            case "2":
+                n = 1;
+                break;
+            case "3":
+                System.out.println("Volviendo al menu principal");
+                System.out.println("----");
+                return;
+            default:
+                System.out.println("----");
+                System.out.println("El numero introducido no corresponde a ningun jugador!");
+                System.out.println("----");
+                return;
         }
         System.out.print("Elige el nombre para el jugador elegido: ");
         jugadores[n].setName(scan.next());
         System.out.println("----");
     }
 
-    public static void empezarJugar() {
+    private static void empezarJugar() {
         Scanner scan = new Scanner(System.in);
-        boolean cert = true;
-        while (cert) {
+        while (true) {
             if (jugadores[0].getFichas() == 0 && jugadores[1].getFichas() == 0) {
                 jugadores[0].partidaEmpatada();
                 jugadores[1].partidaEmpatada();
 
                 System.out.println("----");
-                tablero.showTablero();
+                Tablero.showTablero();
                 System.out.println();
 
                 System.out.println("Ha habido un empate!");
@@ -177,14 +171,14 @@ public class Juego {
             }
 
             System.out.println("----");
-            tablero.showTablero();
-            tablero.showDimensiones();
-            for (int i = 0; i < jugadores.length; i++) {
-                jugadores[i].showJugador();
+            Tablero.showTablero();
+            Tablero.showDimensiones();
+            for (Jugador jugador : jugadores) {
+                jugador.showJugador();
             }
 
             System.out.println("----");
-            System.out.println("Le toca a " + (jugadores[getTurno()].getName()));
+            System.out.println("Le toca a " + (jugador().getName()));
             System.out.print("Elige una columna: ");
             int columnaElegida = comprovarEntrada(scan.next());
             if (columnaElegida == -1) {
@@ -196,23 +190,23 @@ public class Juego {
             if (comprovacionPartidaGanada()) {
                 cambiarTurno();
 
-                tablero.showTablero();
-
+                Tablero.showTablero();
                 System.out.println();
-                jugadores[getTurno()].partidaGanada();
-                jugadores[(getTurno() + 1) % 2].partidaPerdida();
-                System.out.println(jugadores[getTurno()].getName() + " a ganado la partida en el ultimo movimiento!");
+
+                jugador().partidaGanada();
+                System.out.println(jugador().getName() + " a ganado la partida en el ultimo movimiento!");
                 System.out.println("----");
-                showEstaditicas();
 
                 cambiarTurno();
+                jugador().partidaPerdida();
+                showEstaditicas();
                 break;
             }
         }
 
     }
 
-    public static void menuEstadisticas() {
+    private static void menuEstadisticas() {
         Scanner scan = new Scanner(System.in);
         System.out.println("1- Mostrar estadisticas");
         System.out.println("2- Resetear estadisticas");
@@ -223,15 +217,12 @@ public class Juego {
                 showEstaditicas();
                 break;
             case '2':
-                jugadores[0].resetGanadas();
-                jugadores[1].resetGanadas();
-
-                jugadores[0].resetEmpatadas();
-                jugadores[1].resetEmpatadas();
-
-                jugadores[0].resetPerdidas();
-                jugadores[1].resetPerdidas();
-
+                for (Jugador jugador : jugadores) {
+                    jugador.resetGanadas();
+                    jugador.resetEmpatadas();
+                    jugador.resetPerdidas();
+                }
+                
                 System.out.println("Estadisticas reseteadas correctamente");
                 System.out.println("----");
                 showEstaditicas();
@@ -245,14 +236,14 @@ public class Juego {
         }
     }
 
-    public static void showEstaditicas() {
+    private static void showEstaditicas() {
         int partidasTotales = jugadores[0].getPartidasGanadas() + jugadores[0].getPartidasEmpatadas() + jugadores[0].getPartidasPerdidas();
         System.out.println("----");
         if (partidasTotales > 0) {
             System.out.println("Estadisticas Generales");
             System.out.println("Partidas totales: " + partidasTotales);
-            for (int i = 0; i < jugadores.length; i++)
-                System.out.println(jugadores[i].getName() + " tiene un porcentaje de victoria del " + jugadores[i].getPartidasGanadas() / partidasTotales * 100 + "%");
+            for (Jugador jugador : jugadores)
+                System.out.println(jugador.getName() + " tiene un porcentaje de victoria del " + jugador.getPartidasGanadas() / partidasTotales * 100 + "%");
             System.out.println();
         }
         System.out.println("Estadisticas Actuales");
@@ -265,10 +256,10 @@ public class Juego {
         System.out.println("----");
     }
 
-    public static int comprovarEntrada(String num) {
+    private static int comprovarEntrada(String num) {
         if (num.chars().allMatch(Character::isDigit)) {
             int stringToInt = Integer.parseInt(num);
-            if (stringToInt >= 1 && stringToInt <= tablero.getColumnas()) {
+            if (stringToInt >= 1 && stringToInt <= Tablero.getColumnas()) {
                 return stringToInt;
             }
         }
@@ -276,19 +267,26 @@ public class Juego {
     }
 
     private static void inicializar() {
-        tablero.setTablero(new char[tablero.getFilas()][tablero.getColumnas()]);
-        for (int i = 0; i < tablero.getTablero().length; i++) {
-            for (int j = 0; j < tablero.getTablero()[0].length; j++) {
-                tablero.getTablero()[i][j] = tablero.getFichaBasica();
+        Tablero.setTablero(new char[Tablero.getFilas()][Tablero.getColumnas()]);
+
+        int filas = Tablero.getTablero().length;
+        int columnas = Tablero.getTablero()[0].length;
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                Tablero.getTablero()[i][j] = Tablero.getFichaBasica();
             }
         }
-        for (int i = 0; i < jugadores.length; i++) {
-            jugadores[i].setFichas(tablero.getColumnas() * tablero.getFilas() / 2);
+        for (Jugador jugadore : jugadores) {
+            jugadore.setFichas(Tablero.getColumnas() * Tablero.getFilas() / 2);
         }
     }
 
-    public static boolean comprovacionPartidaGanada() {
-        char[][] tableroComp = tablero.getTablero();
+    private static boolean comprovacionPartidaGanada() {
+        char[][] tableroComp = Tablero.getTablero();
+
+        int filas = tableroComp.length;
+        int columnas = tableroComp[0].length;
 
         int contFilas, contColumnas, contDiagonalIzq, contDiagonalDer;
         contFilas = contColumnas = contDiagonalIzq = contDiagonalDer = 0;
@@ -302,7 +300,7 @@ public class Juego {
                 if (contFilas == 3)
                     return true;
             }
-            if ((ultimaColumna + i < tableroComp[0].length) &&
+            if ((ultimaColumna + i < columnas) &&
                     (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila][ultimaColumna + i])
                     ) {
                 contFilas++;
@@ -310,7 +308,7 @@ public class Juego {
                     return true;
             }
             //Comprova Columna
-            if ((ultimaFila + i < tableroComp.length) &&
+            if ((ultimaFila + i < filas) &&
                     (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila + i][ultimaColumna])
                     ) {
                 contColumnas++;
@@ -325,7 +323,7 @@ public class Juego {
                 if (contDiagonalIzq == 3)
                     return true;
             }
-            if ((ultimaFila + i < tableroComp.length) && (ultimaColumna + i < tableroComp[0].length) &&
+            if ((ultimaFila + i < filas) && (ultimaColumna + i < columnas) &&
                     (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila + i][ultimaColumna + i])
                     ) {
                 contDiagonalIzq++;
@@ -333,14 +331,14 @@ public class Juego {
                     return true;
             }
             //Comrpova Diagonal 2
-            if ((ultimaFila + i < tableroComp.length) && (ultimaColumna - i >= 0) &&
+            if ((ultimaFila + i < filas) && (ultimaColumna - i >= 0) &&
                     (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila + i][ultimaColumna - i])
                     ) {
                 contDiagonalDer++;
                 if (contDiagonalDer == 3)
                     return true;
             }
-            if ((ultimaFila - i >= 0) && (ultimaColumna + i < tableroComp[0].length) &&
+            if ((ultimaFila - i >= 0) && (ultimaColumna + i < columnas) &&
                     (tableroComp[ultimaFila][ultimaColumna] == tableroComp[ultimaFila - i][ultimaColumna + i])
                     ) {
                 contDiagonalDer++;
