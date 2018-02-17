@@ -2,6 +2,7 @@ package Conecta4;
 
 public class Jugador {
 
+    private static int fichasPorJugador;
     private String name;
     private int fichas;
     private char ficha;
@@ -15,6 +16,14 @@ public class Jugador {
         partidasGanadas = 0;
         partidasEmpatadas = 0;
         partidasPerdidas = 0;
+    }
+
+    public static void setFichasPorJugador(int f, int c) {
+        Jugador.fichasPorJugador = f * c /2;
+    }
+
+    public static int getFichasPorJugador(){
+        return fichasPorJugador;
     }
 
     public String getName() {

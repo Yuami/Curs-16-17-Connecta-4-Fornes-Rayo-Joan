@@ -34,8 +34,8 @@ public class Juego {
         Tablero.cambiarDimensiones(6, 7);
 
         jugadores = new Jugador[2];
-        jugadores[0] = new Jugador("1", '◉');
-        jugadores[1] = new Jugador("2", '▽');
+        jugadores[0] = new Jugador("Primero", '◉');
+        jugadores[1] = new Jugador("Segundo", '▽');
 
         System.out.println("Bienvenid@ al Conecta 4!");
         System.out.println("----");
@@ -45,7 +45,7 @@ public class Juego {
             Tablero.showDimensiones();
             System.out.println("Jugadores");
             for (Jugador jugador : jugadores) {
-                System.out.println(jugador.getName());
+                System.out.println("Jugador: " + jugador.getName());
             }
             System.out.println("----");
 
@@ -270,23 +270,26 @@ public class Juego {
 
     private static void inicializar() {
 
-        int filas = Tablero.getTablero().length;
-        int columnas = Tablero.getTablero()[0].length;
+        int filas = Tablero.getFilas();
+        int columnas = Tablero.getColumnas();
 
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 Tablero.getTablero()[i][j] = Tablero.getFichaBasica();
             }
         }
+
+        Jugador.setFichasPorJugador(filas, columnas);
         for (Jugador jugadore : jugadores) {
-            jugadore.setFichas(Tablero.getColumnas() * Tablero.getFilas() / 2);
+            jugadore.setFichas(Jugador.getFichasPorJugador());
         }
+
     }
 
 
     private static boolean comprovacionMejorada() {
 
-        if (jugador().getFichas() > Tablero.getFilas() * Tablero.getColumnas() / 2 - 4) {
+        if (jugador().getFichas() > Jugador.getFichasPorJugador() - 4) {
             return false;
         }
 
