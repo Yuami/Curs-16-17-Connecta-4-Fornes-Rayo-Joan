@@ -39,9 +39,9 @@ public class Juego {
 
         System.out.println("Bienvenid@ al Conecta 4!");
         System.out.println("----");
-        boolean volver = true;
+        boolean continuar = true;
 
-        while (volver) {
+        while (continuar) {
             Tablero.showDimensiones();
             System.out.println("Jugadores");
             for (Jugador jugador : jugadores) {
@@ -49,9 +49,7 @@ public class Juego {
             }
             System.out.println("----");
 
-            char eleccion = menuInicio();
-
-            switch (eleccion) {
+            switch (menuInicio()) {
                 case '1':
                     inicializar();
                     empezarJugar();
@@ -66,7 +64,7 @@ public class Juego {
                     menuEstadisticas();
                     break;
                 case '5':
-                    volver = false;
+                    continuar = false;
                     break;
                 default:
                     System.out.println("----");
@@ -302,7 +300,7 @@ public class Juego {
                 if (comp == array[array.length - 1] && j == 1){
                     break;
                 }
-                
+
                 for (int i = 1; i < 4; i++) {
                     int filComp = comp[0] * i;
                     int colComp = comp[1] * i;
