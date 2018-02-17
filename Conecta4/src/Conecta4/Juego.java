@@ -75,15 +75,6 @@ public class Juego {
         System.out.println("Gracias por jugar!");
     }
 
-    private static void usarFicha(int columna) {
-        if (Tablero.getTablero()[0][columna] == Tablero.getFichaBasica()) {
-            Tablero.colocarFicha(jugador(), columna);
-        } else {
-            System.out.println("----");
-            System.out.println("Esa columna ya esta llena!");
-        }
-    }
-
     private static char menuInicio() {
         Scanner scan = new Scanner(System.in);
         System.out.println("1- Empezar a jugar");
@@ -95,22 +86,156 @@ public class Juego {
         return scan.next().charAt(0);
     }
 
-    private static void cambiarDimensones() {
-        Scanner scan = new Scanner(System.in);
-        try {
+    private static void inicializar() {
 
-            System.out.print("Escribe el numero de filas que quieres: ");
-            int fil = scan.nextInt();
-            System.out.print("Escribe el numero de columnas que quieres: ");
-            int col = scan.nextInt();
+        int filas = Tablero.getFilas();
+        int columnas = Tablero.getColumnas();
 
-            Tablero.cambiarDimensiones(fil, col);
-
-        } catch (IllegalArgumentException iae) {
-            System.out.println(iae.getMessage());
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                Tablero.getTablero()[i][j] = Tablero.getFichaBasica();
+            }
         }
 
-        System.out.println("----");
+        Jugador.setFichasPorJugador(filas, columnas);
+        for (Jugador jugadore : jugadores) {
+            jugadore.setFichas(Jugador.getFichasPorJugador());
+        }
+
+    }
+
+    private static void empezarJugar() {
+        Scanner scan = new Scanner(System.in);
+        while (true) {
+            if (jugadores[0].getFichas() == 0 && jugadores[1].getFichas() == 0) {
+                jugadores[0].partidaEmpatada();
+                jugadores[1].partidaEmpatada();
+
+                System.out.println("----");
+                Tablero.showTablero();
+                System.out.println();
+
+                System.out.println("Ha habido un empate!");
+                System.out.println("----");
+
+                showEstaditicas();
+                break;
+            }
+
+            System.out.println("----");
+            Tablero.showTablero();
+            Tablero.showDimensiones();
+            for (Jugador jugador : jugadores) {
+                jugador.showJugador();
+            }
+
+            System.out.println("----");
+            System.out.println("Le toca a " + (jugador().getName()));
+            System.out.print("Elige una columna: ");
+            int columnaElegida = comprovarEntrada(scan.next());
+
+            if (columnaElegida == -1) {
+                System.out.println("----");
+                System.out.println("No es una columna valida");
+            } else {
+                usarFicha(columnaElegida - 1);
+
+                if (comprovacionMejorada()) {
+
+                    Tablero.showTablero();
+                    System.out.println();
+
+                    jugador().partidaGanada();
+                    System.out.println(jugador().getName() + " a ganado la partida en el ultimo movimiento!");
+                    System.out.println("----");
+
+                    cambiarTurno();
+                    jugador().partidaPerdida();
+                    showEstaditicas();
+                    break;
+                }
+                cambiarTurno();
+            }
+        }
+
+    }
+
+    private static int comprovarEntrada(String num) {
+        if (num.chars().allMatch(Character::isDigit)) {
+            int stringToInt = Integer.parseInt(num);
+            if (stringToInt >= 1 && stringToInt <= Tablero.getColumnas()) {
+                return stringToInt;
+            }
+        }
+        return -1;
+    }
+
+    private static void usarFicha(int columna) {
+        if (Tablero.getTablero()[0][columna] == Tablero.getFichaBasica()) {
+            Tablero.colocarFicha(jugador(), columna);
+        } else {
+            System.out.println("----");
+            System.out.println("Esa columna ya esta llena!");
+        }
+    }
+
+    private static boolean comprovacionMejorada() {
+
+        if (jugador().getFichas() > Jugador.getFichasPorJugador() - 4) {
+            return false;
+        }
+
+        char[][] tableroComp = Tablero.getTablero();
+        int fil = tableroComp.length;
+        int col = tableroComp[0].length;
+        int filCompUF, colCompUC;
+
+        int[][] array = {{-1, -1},
+                { 0, -1},
+                { 1, -1}, {1, 0}};
+
+        for (int[] comp : array) {
+            int contComp = 0;
+            for (int j = 0; j < 2; j++) {
+
+                if (comp == array[array.length - 1] && j == 1) {
+                    break;
+                }
+
+                for (int i = 1; i < 4; i++) {
+                    int filComp = comp[0] * i;
+                    int colComp = comp[1] * i;
+
+                    if (j == 0) {
+                        filCompUF = filComp + ultimaFila;
+                        colCompUC = colComp + ultimaColumna;
+                    } else {
+                        filCompUF = -filComp + ultimaFila;
+                        colCompUC = -colComp + ultimaColumna;
+                    }
+
+                    if (filCompUF < 0 || filCompUF >= fil ||
+                            colCompUC < 0 || colCompUC >= col) {
+                        break;
+                    }
+
+                    char comprovando = tableroComp[ultimaFila][ultimaColumna];
+
+
+                    if (comprovando == tableroComp[filCompUF][colCompUC]) {
+                        contComp++;
+                        if (contComp == 3) {
+                            return true;
+                        }
+                        continue;
+                    }
+                    break;
+
+                }
+            }
+        }
+
+        return false;
     }
 
     private static void cambiarNombreJugadores() {
@@ -148,60 +273,22 @@ public class Juego {
         System.out.println("----");
     }
 
-    private static void empezarJugar() {
+    private static void cambiarDimensones() {
         Scanner scan = new Scanner(System.in);
-        while (true) {
-            if (jugadores[0].getFichas() == 0 && jugadores[1].getFichas() == 0) {
-                jugadores[0].partidaEmpatada();
-                jugadores[1].partidaEmpatada();
+        try {
 
-                System.out.println("----");
-                Tablero.showTablero();
-                System.out.println();
+            System.out.print("Escribe el numero de filas que quieres: ");
+            int fil = scan.nextInt();
+            System.out.print("Escribe el numero de columnas que quieres: ");
+            int col = scan.nextInt();
 
-                System.out.println("Ha habido un empate!");
-                System.out.println("----");
+            Tablero.cambiarDimensiones(fil, col);
 
-                showEstaditicas();
-                break;
-            }
-
-            System.out.println("----");
-            Tablero.showTablero();
-            Tablero.showDimensiones();
-            for (Jugador jugador : jugadores) {
-                jugador.showJugador();
-            }
-
-            System.out.println("----");
-            System.out.println("Le toca a " + (jugador().getName()));
-            System.out.print("Elige una columna: ");
-            int columnaElegida = comprovarEntrada(scan.next());
-
-            if (columnaElegida == -1) {
-                System.out.println("No es una columna valida");
-                System.out.println("----");
-            } else {
-                usarFicha(columnaElegida - 1);
-
-                if (comprovacionMejorada()) {
-
-                    Tablero.showTablero();
-                    System.out.println();
-
-                    jugador().partidaGanada();
-                    System.out.println(jugador().getName() + " a ganado la partida en el ultimo movimiento!");
-                    System.out.println("----");
-
-                    cambiarTurno();
-                    jugador().partidaPerdida();
-                    showEstaditicas();
-                    break;
-                }
-                cambiarTurno();
-            }
+        } catch (IllegalArgumentException iae) {
+            System.out.println(iae.getMessage());
         }
 
+        System.out.println("----");
     }
 
     private static void menuEstadisticas() {
@@ -257,93 +344,5 @@ public class Juego {
 
         System.out.println("----");
     }
-
-    private static int comprovarEntrada(String num) {
-        if (num.chars().allMatch(Character::isDigit)) {
-            int stringToInt = Integer.parseInt(num);
-            if (stringToInt >= 1 && stringToInt <= Tablero.getColumnas()) {
-                return stringToInt;
-            }
-        }
-        return -1;
-    }
-
-    private static void inicializar() {
-
-        int filas = Tablero.getFilas();
-        int columnas = Tablero.getColumnas();
-
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                Tablero.getTablero()[i][j] = Tablero.getFichaBasica();
-            }
-        }
-
-        Jugador.setFichasPorJugador(filas, columnas);
-        for (Jugador jugadore : jugadores) {
-            jugadore.setFichas(Jugador.getFichasPorJugador());
-        }
-
-    }
-
-
-    private static boolean comprovacionMejorada() {
-
-        if (jugador().getFichas() > Jugador.getFichasPorJugador() - 4) {
-            return false;
-        }
-
-        char[][] tableroComp = Tablero.getTablero();
-        int fil = tableroComp.length;
-        int col = tableroComp[0].length;
-        int filCompUF, colCompUC;
-
-        int[][] array = {{-1, -1},
-                         { 0, -1},
-                         { 1, -1}, {1, 0}};
-
-        for (int[] comp : array) {
-            int contComp = 0;
-            for (int j = 0; j < 2; j++) {
-
-                if (comp == array[array.length - 1] && j == 1) {
-                    break;
-                }
-
-                for (int i = 1; i < 4; i++) {
-                    int filComp = comp[0] * i;
-                    int colComp = comp[1] * i;
-
-                    if (j == 0) {
-                        filCompUF = filComp + ultimaFila;
-                        colCompUC = colComp + ultimaColumna;
-                    } else {
-                        filCompUF = -filComp + ultimaFila;
-                        colCompUC = -colComp + ultimaColumna;
-                    }
-
-                    if (filCompUF < 0 || filCompUF >= fil ||
-                            colCompUC < 0 || colCompUC >= col) {
-                        break;
-                    }
-
-                    char comprovando = tableroComp[ultimaFila][ultimaColumna];
-
-
-                    if (comprovando == tableroComp[filCompUF][colCompUC]) {
-                        contComp++;
-                        if (contComp == 3) {
-                            return true;
-                        }
-                        continue;
-                    }
-                    break;
-
-                }
-            }
-        }
-
-        return false;
-    }
-
+    
 }
