@@ -140,7 +140,8 @@ public class Juego {
             } else {
                 usarFicha(columnaElegida - 1);
 
-                if (comprovacionMejorada()) {
+//                if (comprovacionMejorada()) {
+                if (comprovacion2()) {
 
                     Tablero.showTablero();
                     System.out.println();
@@ -179,6 +180,50 @@ public class Juego {
         }
     }
 
+    private static boolean comprovacion2() {
+
+        int[][] comprovaciones = {
+                {-1, -1},         {-1, 1},
+                { 0, -1},         { 0, 1},
+                { 1, -1}, {1, 0}, { 1, 1}
+        };
+
+        for (int[] comp : comprovaciones) {
+            int cont = 0;
+
+            for (int i = -3; i < 4; i++) {
+
+                int filComp = comp[0] * i;
+                int colComp = comp[1] * i;
+
+                if (sortidaTauler(filComp, colComp)) continue;
+
+                char comprovando = Tablero.getTablero()[ultimaFila][ultimaColumna];
+                char comparando = Tablero.getTablero()[ultimaFila + filComp][ultimaColumna + colComp];
+
+                if (comprovando == comparando) {
+                    cont++;
+
+                    if (cont == 4) {
+                        return true;
+                    }
+
+                } else {
+                    cont = 0;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean sortidaTauler(int limiteFil, int limiteCol) {
+        int filCompUF = limiteFil + ultimaFila;
+        int colCompUC = limiteCol + ultimaColumna;
+
+        return filCompUF < 0 || filCompUF >= Tablero.getFilas() ||
+                colCompUC < 0 || colCompUC >= Tablero.getColumnas();
+    }
+
     private static boolean comprovacionMejorada() {
 
         if (jugador().getFichas() > Jugador.getFichasPorJugador() - 4) {
@@ -186,25 +231,25 @@ public class Juego {
         }
 
         char[][] tableroComp = Tablero.getTablero();
-        int fil = tableroComp.length;
-        int col = tableroComp[0].length;
+        int filLength = tableroComp.length;
+        int colLength = tableroComp[0].length;
         int filCompUF, colCompUC;
 
-        int[][] array = {{-1, -1},
-                { 0, -1},
-                { 1, -1}, {1, 0}};
+        int[][] comprovacions = {{-1, -1},
+                {0, -1},
+                {1, -1}, {1, 0}};
 
-        for (int[] comp : array) {
+        for (int[] comprovacio : comprovacions) {
             int contComp = 0;
             for (int j = 0; j < 2; j++) {
 
-                if (comp == array[array.length - 1] && j == 1) {
+                if (comprovacio == comprovacions[comprovacions.length - 1] && j == 1) {
                     break;
                 }
 
                 for (int i = 1; i < 4; i++) {
-                    int filComp = comp[0] * i;
-                    int colComp = comp[1] * i;
+                    int filComp = comprovacio[0] * i;
+                    int colComp = comprovacio[1] * i;
 
                     if (j == 0) {
                         filCompUF = filComp + ultimaFila;
@@ -214,23 +259,22 @@ public class Juego {
                         colCompUC = -colComp + ultimaColumna;
                     }
 
-                    if (filCompUF < 0 || filCompUF >= fil ||
-                            colCompUC < 0 || colCompUC >= col) {
+                    if (filCompUF < 0 || filCompUF >= filLength ||
+                            colCompUC < 0 || colCompUC >= colLength) {
                         break;
                     }
 
                     char comprovando = tableroComp[ultimaFila][ultimaColumna];
+                    char comparando = tableroComp[filCompUF][colCompUC];
 
-
-                    if (comprovando == tableroComp[filCompUF][colCompUC]) {
+                    if (comprovando == comparando) {
                         contComp++;
                         if (contComp == 3) {
                             return true;
                         }
-                        continue;
+                    } else {
+                        break;
                     }
-                    break;
-
                 }
             }
         }
@@ -328,7 +372,7 @@ public class Juego {
             System.out.println("Estadisticas Generales");
             System.out.println("Partidas totales: " + partidasTotales);
             for (Jugador jugador : jugadores) {
-                double porcentajeVictoria = jugador.getPartidasGanadas() / ( (double) partidasTotales ) * 100;
+                double porcentajeVictoria = jugador.getPartidasGanadas() / ((double) partidasTotales) * 100;
                 System.out.println(jugador.getName() + " tiene un porcentaje de victoria del " + porcentajeVictoria + "%");
                 System.out.println();
             }
